@@ -1,5 +1,6 @@
 
     <section class="ae-container-fluid ae-container-fluid--inner rk-portfolio">
+      
      <!-- 1 -->
       <div align="center" *ngIf="_productsService.load"> 
           <h2>Loading</h2>
@@ -26,13 +27,10 @@
 
       </div>
 
-
-
-
       <div *ngIf="!_productsService.load"
       class="animated fadeIn ae-masonry ae-masonry-md-2 ae-masonry-xl-4">
-        <a *ngFor="let product of _productsService.products" routerLink="/item" class="rk-item ae-masonry__item"><img src="assets/productos/{{product.url}}.jpg" alt="">
-          <div class="item-meta">
+        <a *ngFor="let product of _productsService.products" [routerLink]="['/item', product.cod]" class="rk-item ae-masonry__item"><img src="assets/productos/{{product.url}}.jpg" alt="">
+          <div [routerLink]="['/item', product.cod]" class="item-meta">
             <h2>{{product.titulo}}</h2>
             <p>{{product.categoria}}</p>
           </div>
